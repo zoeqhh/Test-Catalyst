@@ -1,0 +1,83 @@
+
+<script>
+    window.sender = {
+        address1: '2 Interchange Drive',
+        address2: '',
+        locality: 'Eastern Creek',
+        postcode: '2766',
+        countryCode: 'AU',
+        isResidential: false,
+    };
+    window.getProductVariantsInfoBySku = async (productSku, endCursor) => new Promise((resolve, reject) => {
+        fetch('/graphql', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer {{ settings.storefront_api.token }}'
+            },
+            body: JSON.stringify({
+                query: `
+                    query VariantBySku {
+                        site {
+                            product(sku: "${productSku}") {
+                                entityId
+                                name
+                                sku
+                                variants(isPurchasable: true, first: 50, after: "${endCursor}") {
+                                    pageInfo {
+                                        hasNextPage
+                                        hasPreviousPage
+                                        startCursor
+                                        endCursor
+                                    }
+                                    edges {
+                                        node {
+                                            entityId
+                                            sku
+                                            weight {
+                                                ...DimensionFields
+                                            }
+                                            width {
+                                                ...DimensionFields
+                                            }
+                                            height {
+                                                ...DimensionFields
+                                            }
+                                            depth {
+                                                ...DimensionFields
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    fragment DimensionFields on Measurement {
+                        value
+                        unit
+                    }
+                `
+            }),
+        })
+        .then(res => res.json())
+        .then(data => {
+            if (data.data) {
+                resolve(data);
+            } else {
+                reject();
+            }
+        });
+    });
+
+    window.getCustomShippingOptions = function getCustomShippingOptions(data) {
+        fetch('https://fn-api-prod-aus.azurewebsites.net/api/funcShipmentCarriersPOST?accountId=122119&code=eylFalPgvnHjA6vAF4JIVHOiqaU3mMAzbBC3fJI2XJVqWAradOe8AQ==', {
+            method: 'POST',
+            body: JSON.stringify(data),
+        })
+        .then(res => res.json())
+        .then(res => {
+            console.log('getCustomShippingOptions')
+            console.log(res.data)
+        });
+    }
+</script>

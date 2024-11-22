@@ -1,0 +1,78 @@
+<script>
+    function getCustomerInfo() {
+        fetch('/graphql', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer {{ settings.storefront_api.token }}'
+            },
+            body: JSON.stringify({
+                query: `
+                    query GetCustomer {
+                        customer {
+                            entityId
+                            email
+                            attributes {
+                                attribute(entityId: 1) {
+                                    entityId
+                                    name
+                                    value
+                                }
+                            }
+                        }
+                    }
+                `
+            }),
+        })
+        .then(res => res.json())
+        .then(res => {
+            const customer = res.data.customer;
+            if (customer) {
+                const customerGroupName = '{{customer_group_name}}';
+                console.log(`Customer Group Name: ${customerGroupName}`);
+                const cashSale = (customer.attributes && customer.attributes.attribute && customer.attributes.attribute.value) ? customer.attributes.attribute.value.toLowerCase() : '';
+                console.log(`Cash Sale: ${cashSale}`);
+
+                if (cashSale === 'no' || customerGroupName === 'Wholesale ' || !customerGroupName !== 'Retail Customers' || !customerGroupName) {
+                } else {
+                    const style1 = document.createElement('style');
+                    style1.type = 'text/css';
+                    style1.textContent = `
+                        afterpay-placement,
+                        .cart-additionalCheckoutButtons,
+                        .previewCart-additionalCheckoutButtons,
+                        .previewCartCheckout-additionalCheckoutButtons,
+                        .paypalCommerce-buttons-container,
+                        .form-checklist--paypalcommerce,
+                        .form-checklist--paypalcommercecredit,
+                        .form-checklist--afterpay-pay_by_installment {
+                            display: block;
+                        }
+                    `;
+                    document.head.appendChild(style1);
+                }
+
+                if (customerGroupName) {
+                    const style2 = document.createElement('style');
+                    style2.type = 'text/css';
+                    if (customerGroupName === 'Retail Customers') {
+                        style2.textContent = `
+                            .form-checklist--ewayrapid {
+                                display: block !important;
+                            }
+                        `;
+                    } else if (cashSale === 'no') {
+                        style2.textContent = `
+                            .form-checklist--ewayrapid,
+                            .form-checklist--cheque {
+                                display: block !important;
+                            }
+                        `;
+                    }
+                    document.head.appendChild(style2);
+                }
+            }
+        });
+    }
+    getCustomerInfo();
+</script>
