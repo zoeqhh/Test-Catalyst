@@ -157,7 +157,7 @@ export const CartItem = ({ currencyCode, product }: Props) => {
           {product.image?.url ? (
             <BcImage alt={product.name} height={144} src={product.image.url} width={144} />
           ) : (
-            <div className="h-full w-full bg-gray-200" />
+            <div className="h-full w-full bg-gray-300" />
           )}
         </div>
 

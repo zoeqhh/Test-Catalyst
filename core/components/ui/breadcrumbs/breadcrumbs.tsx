@@ -23,12 +23,12 @@ const Breadcrumbs = ({ breadcrumbs, className }: Props) => {
 
           return (
             <Fragment key={label}>
-              <li className="flex font-medium items-center text-sm text-black">
+              <li className="flex font-medium items-center text-sm">
                 <CustomLink
                   aria-current={isLast ? `page` : undefined}
                   className={cn(
-                    'font-medium hover:text-primary focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-primary/20',
-                    isLast && 'text-gray-700',
+                    'text-black font-medium hover:text-primary focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-primary/20',
+                    isLast && 'text-black',
                   )}
                   href={href}
                 >
@@ -36,7 +36,7 @@ const Breadcrumbs = ({ breadcrumbs, className }: Props) => {
                 </CustomLink>
               </li>
               {!isLast ? (
-                <span className="mx-2 text-custom-gray text-13 text-gray-700">
+                <span className="mx-2 text-custom-gray text-xs">
                   |
                 </span>
               ) : null}

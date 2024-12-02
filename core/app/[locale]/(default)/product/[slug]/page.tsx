@@ -6,15 +6,15 @@ import { Suspense } from 'react';
 
 import { Breadcrumbs } from '~/components/breadcrumbs';
 
-import { Description } from './_components/description';
+import { DescriptionAccordion } from './_components/description-accordion';
 import { DetailsMobile } from './_components/details-mobile';
 import { Details } from './_components/details';
 import { Gallery } from './_components/gallery';
 import { ProductViewed } from './_components/product-viewed';
+import { ProductVariants } from './_components/product-variants';
 import { RelatedProducts } from './_components/related-products';
-import { Reviews } from './_components/reviews';
 import { Warranty } from './_components/warranty';
-import { getProduct } from './page-data';
+import { getProduct, getWebPageContent } from './page-data';
 
 interface Props {
   params: Promise<{ slug: string; locale: string }>;
@@ -34,27 +34,31 @@ function getOptionValueIds({ searchParams }: { searchParams: Awaited<Props['sear
     );
 }
 
-function getSelectColorName(optionValueIds: any, options: any) {
-  let selectedColor: any;
+function getSelectColorName(optionValueIds: any, productOptions: any) {
+  let selectedColor: any = '';
+
+  const options = removeEdgesAndNodes(productOptions);
 
   options.forEach((option: any) => {
-    if (option.node.displayName === 'Color') {
+    if (option.displayName === 'Color') {
+      const values = removeEdgesAndNodes(option.values);
       if (optionValueIds.length) {
         optionValueIds.forEach((optionValueId: any) => {
-          if (optionValueId.optionEntityId === option.node.entityId) {
-            option.node.values.edges.forEach((value: any) => {
-              if (value.node.entityId === optionValueId.valueEntityId) {
-                selectedColor = value.node.label.toLowerCase();
+          if (optionValueId.optionEntityId === option.entityId) {
+
+            values.forEach((value: any) => {
+              if (value.entityId === optionValueId.valueEntityId) {
+                selectedColor = value.label.toLowerCase();
               }
             })
           }
         })
       } else {
-        const defaultSelectedColor = option.node.values.edges.find((value: any) => value.node.isSelected);
-        const defaultColor = option.node.values.edges.find((value: any) => value.node.isDefault);
-        const firstColor = option.node.values.edges.find((value: any, index: number) => index === 0);
-        const currentColor = defaultSelectedColor || defaultColor || firstColor;
-        selectedColor = currentColor.node.label.toLowerCase();
+        const defaultSelectedColor = values.find((value: any) => value.isSelected);
+        const defaultColor = values.find((value: any) => value.isDefault);
+        const firstColor = values.find((value: any, index: number) => index === 0);
+        const currentColor:any = defaultSelectedColor || defaultColor || firstColor;
+        selectedColor = currentColor?.label.toLowerCase() || '';
       }
     }
   })
@@ -117,12 +121,15 @@ export default async function Product(props: Props) {
     optionValueIds,
     useDefaultOptionSelections: true,
   });
+  const content = await getWebPageContent();
+
+  const sustainability = content.htmlBody;
 
   if (!product) {
     return notFound();
   }
 
-  const selectedColor = getSelectColorName(optionValueIds, product.productOptions.edges);
+  const selectedColor = getSelectColorName(optionValueIds, product.productOptions);
 
   const category = removeEdgesAndNodes(product.categories).at(0);
 
@@ -130,20 +137,21 @@ export default async function Product(props: Props) {
     <>
       {category && <Breadcrumbs category={category} />}
 
-      <div className="mb-12 mt-4 lg:grid lg:grid-cols-3 lg:gap-8">
+      <div className='mb-12 mt-4 lg:grid lg:grid-cols-3 lg:gap-8'>
         <DetailsMobile product={product} />
-        <div className="lg:col-span-2">
+        <div className='lg:col-span-2'>
           <Gallery product={product} selectedColor={selectedColor} />
         </div>
-        <div className="lg:col-span-1">
+        <div className='lg:col-span-1'>
           <Details product={product} />
-          <Description product={product} />
+          <DescriptionAccordion product={product} sustainability={sustainability} />
           <Warranty product={product} />
-          <Suspense fallback={t('loading')}>
-            <Reviews productId={product.entityId} />
-          </Suspense>
         </div>
       </div>
+
+      {/* <Suspense fallback={t('loading')}> */}
+        <ProductVariants productId={product.entityId} />
+      {/* </Suspense> */}
 
       <Suspense fallback={t('loading')}>
         <RelatedProducts productId={product.entityId} />

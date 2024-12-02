@@ -33,14 +33,14 @@ export const Gallery = ({ product, selectedColor }: Props) => {
     });
   }
 
-  // const defaultImageIndex = images.findIndex((image) => image.isDefault);
-
-  images = images.filter(image => (
-    image.altText.toLowerCase().indexOf(`(${selectedColor})`) !== -1
-  ))
+  if (selectedColor) {
+    images = images.filter(image => (
+      image.altText.toLowerCase().indexOf(`(${selectedColor})`) !== -1
+    ))
+  }
 
   return (
-    <div className="-mx-6 mb-10 sm:-mx-0 md:mb-12">
+    <div className="-mx-4 mb-5 md:-mx-10 md:mb-12 lg:-mx-0">
       <div className="lg:sticky lg:top-0">
         <div className="hidden lg:block">
           <ComponentsGallery

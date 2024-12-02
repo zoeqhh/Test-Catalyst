@@ -100,7 +100,7 @@ const Search = ({ initialTerm = '', logo, onSearch }: Props) => {
       <SheetPrimitive.Trigger asChild>
         <Button
           aria-label="Open search popup"
-          className="border-0 bg-transparent p-3 text-black hover:bg-transparent hover:text-primary focus-visible:text-primary"
+          className="border-0 bg-transparent p-3 hover:bg-transparent hover:text-primary focus-visible:text-primary"
         >
           <SearchIcon />
         </Button>
@@ -161,7 +161,7 @@ const Search = ({ initialTerm = '', logo, onSearch }: Props) => {
               <SheetPrimitive.Close asChild>
                 <Button
                   aria-label="Close search popup"
-                  className="w-auto justify-self-end border-0 bg-transparent p-2.5 text-black hover:bg-transparent hover:text-primary focus-visible:text-primary focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-primary/20 peer-hover:text-primary peer-focus-visible:text-primary"
+                  className="w-auto justify-self-end border-0 bg-transparent p-2.5 hover:bg-transparent hover:text-primary focus-visible:text-primary focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-primary/20 peer-hover:text-primary peer-focus-visible:text-primary"
                 >
                   <small className="me-2 hidden text-base md:inline-flex">Close</small>
                   <X />

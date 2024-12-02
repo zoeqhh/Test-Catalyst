@@ -1,6 +1,6 @@
 import useEmblaCarousel, { UseEmblaCarouselType } from 'embla-carousel-react';
 import { ArrowLeft, ArrowRight } from 'lucide-react';
-import { ReactNode, useCallback, useEffect, useId, useMemo, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { BcImage } from '~/components/bc-image';
 
 import { cn } from '~/lib/utils';
@@ -108,8 +108,8 @@ const CarouselImages = ({ className, images, ...props }: Props) => {
         </div>
       </div>
 
-      <div className="overflow-hidden px-2" ref={carouselRef}>
-        <div className="flex">
+      <div className="overflow-hidden" ref={carouselRef}>
+        <div className="flex px-2">
           { images && images.length ? images.map((image, index) => (
             <BcImage
               alt={image.altText}

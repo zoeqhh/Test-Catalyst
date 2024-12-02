@@ -75,3 +75,42 @@ export const getProduct = cache(async (variables: Variables) => {
   });
   return data.site.product;
 });
+
+const getWebPageContentQuery = graphql(`
+  query getWebPageContent($urlPath: String!) {
+    site {
+      route(path: $urlPath) {
+        node {
+          __typename
+          id
+          ... on NormalPage {
+            name
+            htmlBody
+            entityId
+          }
+        }
+      }
+    }
+  }
+`);
+
+interface WebPageContentQueryOptions {
+  urlPath?: string;
+}
+
+export const getWebPageContent = cache(async ({ urlPath = '/pdp-sustainability/' }: WebPageContentQueryOptions = {}) => {
+  const customerAccessToken = await getSessionCustomerAccessToken();
+  const response = await client.fetch({
+    document: getWebPageContentQuery,
+    variables: { urlPath },
+    customerAccessToken,
+  });
+
+  const node = response.data.site.route.node;
+
+  if (node?.__typename !== 'NormalPage') {
+    throw new Error('Failed to fetch raw web page content');
+  }
+
+  return node;
+});

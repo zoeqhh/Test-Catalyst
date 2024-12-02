@@ -1,4 +1,5 @@
 import { ProductFormFragment } from '~/app/[locale]/(default)/product/[slug]/_components/product-form/fragment';
+import { GalleryFragment } from '~/app/[locale]/(default)/product/[slug]/_components/gallery/fragment';
 import { graphql } from '~/client/graphql';
 import { BreadcrumbsFragment } from '~/components/breadcrumbs/fragment';
 
@@ -17,12 +18,22 @@ export const ProductItemFragment = graphql(
           }
         }
       }
+      customFields(first: 50) {
+        edges {
+          node {
+            entityId
+            name
+            value
+          }
+        }
+      }
       brand {
         name
       }
       ...PricingFragment
       ...ProductFormFragment
+      ...GalleryFragment
     }
   `,
-  [BreadcrumbsFragment, PricingFragment, ProductFormFragment],
+  [BreadcrumbsFragment, PricingFragment, ProductFormFragment, GalleryFragment],
 );

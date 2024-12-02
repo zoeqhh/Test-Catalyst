@@ -29,7 +29,7 @@ export function SortBy() {
   };
 
   return (
-    <div className="order-2 min-w-[224px] md:order-3 md:w-auto hide-button-border">
+    <div className="order-2 min-w-[224px] md:order-3 md:w-auto hide-button-border font-medium">
       <span className="hidden" data-pending={isPending ? '' : undefined} />
       <Select
         label={t('ariaLabel')}

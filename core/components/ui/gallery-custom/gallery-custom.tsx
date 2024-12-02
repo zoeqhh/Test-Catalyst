@@ -14,8 +14,8 @@ const GalleryCustom = ({ className, images }: Props) => {
   return (
     <div aria-live="polite" className={className}>
       { images && images.length ? (
-        <div className="grid grid-cols-2 gap-6">
-            {images.map((image, index) => (
+        <div className="grid grid-cols-2 gap-4">
+            {images.map((image) => (
               <BcImage
                 alt={image.altText}
                 className="h-full w-full object-contain"

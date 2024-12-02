@@ -55,6 +55,7 @@ export const RelatedProducts = async ({ productId }: Props) => {
       products={relatedProducts}
       showCart={false}
       showCompare={false}
+      needImagesSlider={true}
       title={t('relatedProducts')}
     />
   );

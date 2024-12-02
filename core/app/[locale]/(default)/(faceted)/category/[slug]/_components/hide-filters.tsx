@@ -12,6 +12,6 @@ export default function HideFilters({setHideFilter, hideFilter}: HideFiltersProp
     setHideFilter(!hideFilter)
   }
   return (
-    <div className="pointer flex items-center gap-[8px]" onClick={handleClick}><span>Hide Filters</span> <Filter /></div>
+    <div className="pointer flex items-center gap-[8px] font-medium" onClick={handleClick}><span>Hide Filters</span> <Filter /></div>
   )
 }

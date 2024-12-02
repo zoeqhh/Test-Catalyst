@@ -26,7 +26,7 @@ export const MultipleChoiceField = ({ option }: Props) => {
   const searchParams = useSearchParams();
 
   const searchParamSelected = searchParams.get(String(option.entityId));
-  const values = removeEdgesAndNodes(option.values);
+  const values = [...removeEdgesAndNodes(option.values)].sort((a: any, b: any) => a.label.localeCompare(b.label))
 
   const handleInteraction = ({ optionId, valueId, prefetch = false }: InteractionOptions) => {
     const optionSearchParams = new URLSearchParams(searchParams.toString());
@@ -67,7 +67,7 @@ export const MultipleChoiceField = ({ option }: Props) => {
     case 'Swatch':
       return (
         <div key={option.entityId}>
-          <Label className="mb-2 inline-block font-semibold" id={`label-${option.entityId}`}>
+          <Label className="mb-2 inline-block text-lg" id={`label-${option.entityId}`}>
             Select {option.displayName}
           </Label>
           <Swatch
@@ -104,7 +104,7 @@ export const MultipleChoiceField = ({ option }: Props) => {
     case 'RectangleBoxes':
       return (
         <div key={option.entityId}>
-          <Label className="mb-2 inline-block font-semibold" id={`label-${option.entityId}`}>
+          <Label className="mb-2 inline-block text-lg" id={`label-${option.entityId}`}>
             Select {option.displayName}
           </Label>
           <RectangleList
@@ -135,7 +135,7 @@ export const MultipleChoiceField = ({ option }: Props) => {
     case 'RadioButtons':
       return (
         <div key={option.entityId}>
-          <Label className="mb-2 inline-block font-semibold" id={`label-${option.entityId}`}>
+          <Label className="mb-2 inline-block text-lg" id={`label-${option.entityId}`}>
             Select {option.displayName}
           </Label>
           <RadioGroup
@@ -169,7 +169,7 @@ export const MultipleChoiceField = ({ option }: Props) => {
     case 'DropdownList':
       return (
         <div key={option.entityId}>
-          <Label className="mb-2 inline-block font-semibold" htmlFor={`label-${option.entityId}`}>
+          <Label className="mb-2 inline-block text-lg" htmlFor={`label-${option.entityId}`}>
             Select {option.displayName}
           </Label>
           <Select
@@ -204,7 +204,7 @@ export const MultipleChoiceField = ({ option }: Props) => {
     case 'ProductPickListWithImages':
       return (
         <div key={option.entityId}>
-          <Label className="mb-2 inline-block font-semibold" id={`label-${option.entityId}`}>
+          <Label className="mb-2 inline-block text-lg" id={`label-${option.entityId}`}>
             Select {option.displayName}
           </Label>
           <PickList

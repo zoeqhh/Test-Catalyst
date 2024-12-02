@@ -347,7 +347,10 @@
         "Form": {
             "success": "Dodano {cartItems, plural, =1 {1 produkt} other {# produkty(-ów)}} <cartLink>do koszyka</cartLink>",
             "error": "Błąd podczas dodawania produktu do koszyka. Spróbuj ponownie.",
-            "saveToWishlist": "Zapisz na liście życzeń",
+            "download": "Download",
+            "share": "Share",
+            "compare": "Compare",
+            "saveToWishlist":  "Zapisz na liście życzeń",
             "quantityLabel": "Ilość"
         },
         "Description": {

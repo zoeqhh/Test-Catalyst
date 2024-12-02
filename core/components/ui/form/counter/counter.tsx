@@ -1,4 +1,4 @@
-import { ChevronDown, ChevronUp } from 'lucide-react';
+import { MinusIcon, PlusIcon } from 'lucide-react';
 import {
   ComponentPropsWithRef,
   ElementRef,
@@ -98,11 +98,11 @@ const Counter = forwardRef<ElementRef<'input'>, Props>(
     };
 
     return (
-      <div className={cn('relative', className)}>
+      <div className={cn('relative h-[64px]', className)}>
         <button
-          aria-hidden="true"
-          aria-label="Decrease count"
-          className="peer/down absolute start-0 top-0 flex h-full w-12 items-center justify-center focus-visible:outline-none disabled:text-gray-200"
+          aria-hidden='true'
+          aria-label='Decrease count'
+          className='peer/down absolute start-0 top-0 flex h-full w-12 items-center justify-center focus-visible:outline-none disabled:text-gray-300'
           disabled={!canDecrement()}
           onClick={() => {
             decrement();
@@ -110,15 +110,15 @@ const Counter = forwardRef<ElementRef<'input'>, Props>(
             inputRef.current?.focus();
           }}
           tabIndex={-1}
-          type="button"
+          type='button'
         >
-          <ChevronDown />
+          <MinusIcon />
         </button>
 
         <button
-          aria-hidden="true"
-          aria-label="Increase count"
-          className="peer/up absolute end-0 top-0 flex h-full w-12 items-center justify-center focus-visible:outline-none disabled:text-gray-200"
+          aria-hidden='true'
+          aria-label='Increase count'
+          className='peer/up absolute end-0 top-0 flex h-full w-12 items-center justify-center focus-visible:outline-none disabled:text-gray-300'
           disabled={!canIncrement()}
           onClick={() => {
             increment();
@@ -126,14 +126,14 @@ const Counter = forwardRef<ElementRef<'input'>, Props>(
             inputRef.current?.focus();
           }}
           tabIndex={-1}
-          type="button"
+          type='button'
         >
-          <ChevronUp />
+          <PlusIcon />
         </button>
 
         <input
           className={cn(
-            'peer/input w-full border-2 border-gray-200 px-12 py-2.5 text-center text-base placeholder:text-gray-500 hover:border-primary focus-visible:border-primary focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-primary/20 disabled:bg-gray-100 disabled:hover:border-gray-200 peer-hover/down:border-primary peer-hover/up:border-primary peer-hover/down:disabled:border-gray-200 peer-hover/up:disabled:border-gray-200 [&::-webkit-inner-spin-button]:appearance-none',
+            'peer/input w-full h-full border-2 border-gray-200 px-12 py-2.5 text-center text-base placeholder:text-gray-600 hover:border-primary focus-visible:border-primary focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-primary/20 disabled:bg-gray-100 disabled:hover:border-gray-200 peer-hover/down:border-primary peer-hover/up:border-primary peer-hover/down:disabled:border-gray-200 peer-hover/up:disabled:border-gray-200 [&::-webkit-inner-spin-button]:appearance-none',
             error &&
               'border-error-secondary hover:border-error focus-visible:border-error-secondary focus-visible:ring-error-secondary/20 disabled:border-gray-200 peer-hover/down:border-error peer-hover/up:border-error peer-hover/down:disabled:border-gray-200 peer-hover/up:disabled:border-gray-200',
           )}
@@ -165,7 +165,7 @@ const Counter = forwardRef<ElementRef<'input'>, Props>(
           }}
           ref={inputRef}
           step={step}
-          type="number"
+          type='number'
           value={currValue}
           {...props}
         />

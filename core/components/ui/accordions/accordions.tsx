@@ -1,5 +1,5 @@
 import * as AccordionPrimitive from '@radix-ui/react-accordion';
-import { ChevronDown, Plus, Minus } from 'lucide-react';
+import { Plus, Minus } from 'lucide-react';
 import { ReactNode } from 'react';
 
 interface Accordion {
@@ -22,13 +22,13 @@ type Props =
     };
 
 const Accordions = ({ accordions, ...props }: Props) => {
-  
+
   return (
     <AccordionPrimitive.Root {...props}>
       {accordions.map((accordion, i) => (
         <AccordionPrimitive.Item key={i} value={accordion.title} className='border-t border-t-qh py-[20px]'>
           <AccordionPrimitive.Header className="flex">
-            <AccordionPrimitive.Trigger className="flex flex-1 items-center justify-between  text-20 text-xh outline-none transition-all hover:text-secondary focus-visible:text-secondary [&[data-state=open]>svg]:rotate-180">
+            <AccordionPrimitive.Trigger className="flex flex-1 items-center justify-between text-lg outline-none transition-all mb-2 hover:text-primary focus-visible:text-secondary [&[data-state=open]>svg]:rotate-180">
               {accordion.title}
               <Plus className='add'/>
               <Minus className='sub'/>

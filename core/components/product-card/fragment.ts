@@ -1,3 +1,4 @@
+import { GalleryFragment } from '~/app/[locale]/(default)/product/[slug]/_components/gallery/fragment';
 import { PricingFragment } from '~/client/fragments/pricing';
 import { graphql } from '~/client/graphql';
 
@@ -8,20 +9,32 @@ export const ProductCardFragment = graphql(
     fragment ProductCardFragment on Product {
       entityId
       name
-      defaultImage {
-        altText
-        url: urlTemplate(lossy: true)
-      }
-      variants {
+      options {
         edges {
           node {
-              id
-              defaultImage {
-              url(width: 40)
+            displayName
+            entityId
+            isRequired
+            values {
+              edges {
+                node {
+                  label
+                  entityId
+                }
               }
-                      }
-                    }
-                  },
+            }
+          }
+        }
+      }
+      customFields(first: 50) {
+        edges {
+          node {
+            entityId
+            name
+            value
+          }
+        }
+      }
       path
       brand {
         name
@@ -33,7 +46,8 @@ export const ProductCardFragment = graphql(
       }
       ...AddToCartFragment
       ...PricingFragment
+      ...GalleryFragment
     }
   `,
-  [AddToCartFragment, PricingFragment],
+  [AddToCartFragment, PricingFragment, GalleryFragment],
 );

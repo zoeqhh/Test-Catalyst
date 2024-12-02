@@ -347,7 +347,10 @@
         "Form": {
             "success": "{cartItems, plural, =1 {1 item} other {# itens}} adicionado(s) <cartLink> ao carrinho</cartLink>",
             "error": "Erro ao colocar o produto no carrinho. Tente novamente.",
-            "saveToWishlist": "Salvar na lista de desejos",
+            "download": "Download",
+            "share": "Share",
+            "compare": "Compare",
+            "saveToWishlist":  "Salvar na lista de desejos",
             "quantityLabel": "Quantidade"
         },
         "Description": {

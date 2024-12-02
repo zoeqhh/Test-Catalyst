@@ -49,7 +49,7 @@ export default async function StoreSelector({ params }: Props) {
 
   return (
     <>
-      <header className="flex h-[92px] items-center bg-white px-4 2xl:container sm:px-10 lg:gap-8 lg:px-12 2xl:mx-auto 2xl:px-0">
+      <header className="flex h-[92px] items-center bg-white px-4 md:px-10 lg:gap-8">
         {storeSettings && (
           <Link className="p-0" href="/">
             <StoreLogo data={storeSettings} />

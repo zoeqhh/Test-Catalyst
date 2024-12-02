@@ -347,7 +347,10 @@
         "Form": {
             "success": "{cartItems, plural, =1 {1 Item} other {# Items}} wurde zu<cartLink> Ihrem Warenkorb</cartLink> hinzugefügt",
             "error": "Fehler beim Hinzufügen des Produkts zum Warenkorb. Bitte versuchen Sie es erneut.",
-            "saveToWishlist": "Auf Wunschliste speichern",
+            "download": "Download",
+            "share": "Share",
+            "compare": "Compare",
+            "saveToWishlist":  "Auf Wunschliste speichern",
             "quantityLabel": "Menge"
         },
         "Description": {

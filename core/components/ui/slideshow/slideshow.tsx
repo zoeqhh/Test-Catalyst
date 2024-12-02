@@ -96,7 +96,7 @@ const Slideshow = ({ className, interval = 15_000, slides }: Props) => {
     <section
       aria-label="Interactive slide show"
       aria-roledescription="carousel"
-      className={cn('relative -mx-6 overflow-hidden sm:-mx-10 md:-mx-12 lg:mx-0', className)}
+      className={cn('relative -mx-6 overflow-hidden md:-mx-10 lg:mx-0', className)}
       onBlur={() => setIsHoverPaused(false)}
       onFocus={() => setIsHoverPaused(true)}
       onMouseEnter={() => setIsHoverPaused(true)}

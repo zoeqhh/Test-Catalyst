@@ -41,7 +41,7 @@
       "multipleAddresses": "Save multiple shipping addresses",
       "ordersHistory": "Access your order history",
       "ordersTracking":  "Track new orders",
-      "wishlists": "Save items to your Wishlist",
+      "wishlists": "Save items to your favorite list",
       "createLink": "Create Account "
     },
     "ForgotPassword": {
@@ -143,7 +143,7 @@
       "orders": "Orders",
       "messages": "Messages",
       "addresses": "Addresses",
-      "wishlists": "Wish lists",
+      "wishlists": "Favorite lists",
       "recentlyViewed": "Recently viewed",
       "settings": "Account settings",
       "changePassword": "Change password",
@@ -347,8 +347,11 @@
     "Form": {
       "success": "{cartItems, plural, =1 {1 Item} other {# Items}} added to <cartLink> your cart</cartLink>",
       "error": "Error adding product to cart. Please try again.",
-      "saveToWishlist": "Save to wishlist",
-      "quantityLabel": "Quantity"
+      "download": "Download",
+      "share": "Share",
+      "compare": "Compare",
+      "saveToWishlist": "Save to favorite list",
+      "quantityLabel": "QTY"
     },
     "Description": {
       "heading": "Description"
@@ -452,8 +455,8 @@
       "checkSpelling": "Please check the spelling or try another search."
     },
     "AddToCartButton": {
-      "addToCart": "Add to cart",
-      "outOfStock": "Out of stock", 
+      "addToCart": "Add to Cart",
+      "outOfStock": "Out of stock",
       "preorder": "Preorder",
       "unavailable": "Unavailable",
       "processing": "Processing..."

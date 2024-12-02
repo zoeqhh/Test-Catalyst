@@ -31,7 +31,7 @@ export const MobileNav = ({ links, logo }: Props) => {
         <Button
           aria-controls="nav-menu"
           aria-label="Toggle navigation"
-          className="group bg-transparent p-3 text-black hover:bg-transparent hover:text-primary lg:hidden"
+          className="group bg-transparent p-3 hover:bg-transparent hover:text-primary lg:hidden"
           variant="subtle"
         >
           <Menu />

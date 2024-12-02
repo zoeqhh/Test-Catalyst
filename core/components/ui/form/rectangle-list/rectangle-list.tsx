@@ -19,7 +19,7 @@ const RectangleList = forwardRef<ElementRef<typeof RadioGroupPrimitive.Root>, Pr
 
     return (
       <RadioGroupPrimitive.Root
-        className={cn('flex flex-wrap gap-4', className)}
+        className={cn('flex flex-wrap gap-[8px]', className)}
         orientation="horizontal"
         ref={ref}
         {...props}
@@ -32,7 +32,7 @@ const RectangleList = forwardRef<ElementRef<typeof RadioGroupPrimitive.Root>, Pr
               key={`${id}-${value}`}
               {...itemProps}
               className={cn(
-                'border-2 px-6 py-2.5 font-semibold text-black hover:border-primary focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-primary/20 disabled:border-gray-100 disabled:text-gray-400 disabled:hover:border-gray-100 data-[state=checked]:border-primary',
+                'h-[48px] w-[80px] lg:w-[92px] border p-[2px] font-semibold border-gray-300 rounded-[6px] lg:border-white hover:border-primary focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-primary/20 disabled:border-gray-100 disabled:text-gray-500 disabled:hover:border-gray-100 data-[state=checked]:text-primary data-[state=checked]:border-primary lg:data-[state=checked]:text-black lg:data-[state=checked]:border-black data-[state=checked]:bg-gray-100',
                 error &&
                   'border-error-secondary hover:border-error focus-visible:border-error-secondary focus-visible:ring-error/20 disabled:border-gray-200 data-[state=checked]:border-error-secondary',
               )}

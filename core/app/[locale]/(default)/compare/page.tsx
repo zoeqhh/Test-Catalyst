@@ -135,7 +135,7 @@ export default async function Compare(props: Props) {
         {t('heading', { quantity: products.length })}
       </h1>
 
-      <div className="-mx-6 overflow-auto overscroll-x-contain px-4 sm:-mx-10 sm:px-10 lg:-mx-12 lg:px-12">
+      <div className="-mx-6 overflow-auto overscroll-x-contain px-4 sm:px-10 md:-mx-10 lg:-mx-12 lg:px-12">
         <table className="mx-auto w-full max-w-full table-fixed text-base md:w-fit">
           <caption className="sr-only">{t('Table.caption')}</caption>
 

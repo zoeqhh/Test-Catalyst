@@ -347,7 +347,10 @@
         "Form": {
             "success": "<cartLink>{cartItems, plural, =1 {1 varer} other {# varer}} tilføjet til din indkøbskurv</cartLink>",
             "error": "Fejl ved tilføjelse af produkt til indkøbskurv. Prøv igen.",
-            "saveToWishlist": "Gem i ønskeliste",
+            "download": "Download",
+            "share": "Share",
+            "compare": "Compare",
+            "saveToWishlist":  "Gem i ønskeliste",
             "quantityLabel": "Antal"
         },
         "Description": {

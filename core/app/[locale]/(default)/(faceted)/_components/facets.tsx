@@ -25,8 +25,8 @@ const ProductCount = ({ shouldDisplay, count }: ProductCountProps) => {
   }
 
   return (
-    <span className="ps-3 text-gray-500">
-      {count} <span className="sr-only">products</span>
+    <span className="ps-3 font-medium">
+      ({count}) <span className="sr-only">products</span>
     </span>
   );
 };
@@ -96,7 +96,7 @@ export const Facets = ({ facets, pageType }: Props) => {
             const key = `${brand.entityId}-${brand.isSelected.toString()}`;
 
             return (
-              <div className="flex max-w-sm items-center py-2 ps-1" key={key}>
+              <div className="flex max-w-sm items-center py-2 ps-1 font-medium" key={key}>
                 <Checkbox
                   aria-labelledby={labelId}
                   defaultChecked={brand.isSelected}
@@ -105,7 +105,7 @@ export const Facets = ({ facets, pageType }: Props) => {
                   onCheckedChange={submitForm}
                   value={brand.entityId}
                 />
-                <Label className="cursor-pointer ps-3" htmlFor={id} id={labelId}>
+                <Label className="cursor-pointer ps-3 font-medium" htmlFor={id} id={labelId}>
                   {brand.name}
                   <ProductCount
                     count={brand.productCount}
@@ -130,7 +130,7 @@ export const Facets = ({ facets, pageType }: Props) => {
             const key = `${category.entityId}-${category.isSelected.toString()}`;
 
             return (
-              <div className="flex max-w-sm items-center py-2 ps-1" key={key}>
+              <div className="flex max-w-sm items-center py-2 ps-1 font-medium" key={key}>
                 <Checkbox
                   aria-labelledby={labelId}
                   defaultChecked={category.isSelected}
@@ -174,7 +174,7 @@ export const Facets = ({ facets, pageType }: Props) => {
                   onCheckedChange={submitForm}
                   value={attribute.value}
                 />
-                <Label className="cursor-pointer ps-3" htmlFor={id} id={labelId}>
+                <Label className="cursor-pointer ps-3 font-medium" htmlFor={id} id={labelId}>
                   {attribute.value}
                   <ProductCount
                     count={attribute.productCount}
@@ -261,7 +261,7 @@ export const Facets = ({ facets, pageType }: Props) => {
                 value="free_shipping"
               />
               <Label
-                className="cursor-pointer ps-3"
+                className="cursor-pointer ps-3 font-medium"
                 htmlFor="shipping-free_shipping"
                 id="shipping-free_shipping-label"
               >
@@ -282,7 +282,7 @@ export const Facets = ({ facets, pageType }: Props) => {
                 name="isFeatured"
                 onCheckedChange={submitForm}
               />
-              <Label className="cursor-pointer ps-3" htmlFor="isFeatured" id="isFeatured-label">
+              <Label className="cursor-pointer ps-3 font-medium" htmlFor="isFeatured" id="isFeatured-label">
                 {t('isFeaturedLabel')}
                 <ProductCount
                   count={facet.isFeatured.productCount}
@@ -302,7 +302,7 @@ export const Facets = ({ facets, pageType }: Props) => {
                 value="in_stock"
               />
               <Label
-                className="cursor-pointer ps-3"
+                className="cursor-pointer ps-3 font-medium"
                 htmlFor="stock-in_stock"
                 id="stock-in_stock-label"
               >

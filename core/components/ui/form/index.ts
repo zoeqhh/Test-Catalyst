@@ -9,6 +9,7 @@ export * from './label';
 export * from './pick-list';
 export * from './radio-group';
 export * from './rectangle-list';
+export * from './quantity';
 export * from './select';
 export * from './swatch';
 export * from './text-area';

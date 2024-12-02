@@ -2,7 +2,7 @@
 
 import { removeEdgesAndNodes } from '@bigcommerce/catalyst-client';
 import { FragmentOf } from 'gql.tada';
-import { AlertCircle, Check, Heart, ShoppingCart } from 'lucide-react';
+import { AlertCircle, CloudDownloadIcon, Check, HeartIcon, Share2Icon, ShirtIcon } from 'lucide-react';
 import { useFormatter, useTranslations } from 'next-intl';
 import { FormProvider, useFormContext } from 'react-hook-form';
 import { toast } from 'react-hot-toast';
@@ -52,9 +52,7 @@ export const Submit = ({ data: product }: Props) => {
   const { isSubmitting } = formState;
 
   return (
-    <AddToCartButton data={product} loading={isSubmitting}>
-      <ShoppingCart className="mr-2" />
-    </AddToCartButton>
+    <AddToCartButton className="p-2.5 basis-full xs:basis-1/2 lg:basis-full xl:basis-1/2" data={product} loading={isSubmitting} />
   );
 };
 
@@ -79,7 +77,7 @@ export const ProductForm = ({ data: product }: Props) => {
               cartItems: quantity,
               cartLink: (chunks) => (
                 <Link
-                  className="font-semibold text-primary hover:text-secondary"
+                  className="font-semibold text-primary hover:text-primary"
                   href="/cart"
                   prefetch="viewport"
                   prefetchKind="full"
@@ -159,7 +157,7 @@ export const ProductForm = ({ data: product }: Props) => {
         })}
 
         {product.prices && (
-          <div className="mt-6 text-2xl font-bold text-[#0053B6] lg:text-3xl">
+          <div className="mt-6 text-2xl font-bold text-primary lg:mt-0">
             {showPriceRange ? (
               <span>
                 {format.number(product.prices.priceRange.min.value, {
@@ -222,18 +220,25 @@ export const ProductForm = ({ data: product }: Props) => {
           </div>
         )}
 
-        <QuantityField />
-
-        <div className="mt-4 flex flex-col gap-4 @md:flex-row">
+        <div className="flex items-end flex-wrap xs:flex-nowrap lg:flex-wrap xl:flex-nowrap gap-4">
+          <QuantityField />
           <Submit data={product} />
+        </div>
 
-          {/* NOT IMPLEMENTED YET */}
-          <div className="w-full">
-            <Button disabled type="submit" variant="secondary">
-              <Heart aria-hidden="true" className="mr-2" />
-              <span>{t('saveToWishlist')}</span>
-            </Button>
-          </div>
+        {/* NOT IMPLEMENTED YET */}
+        <div className="w-full flex gap-4 justify-center mb-6">
+          <Button type="button" variant="icon" aria-label={t('saveToWishlist')} title={t('saveToWishlist')}>
+            <HeartIcon />
+          </Button>
+          <Button type="button" variant="icon" aria-label={t('compare')} title={t('compare')}>
+            <ShirtIcon />
+          </Button>
+          <Button type="button" variant="icon" aria-label={t('download')} title={t('download')}>
+            <CloudDownloadIcon />
+          </Button>
+          <Button type="button" variant="icon" aria-label={t('share')} title={t('share')}>
+            <Share2Icon />
+          </Button>
         </div>
       </form>
     </FormProvider>

@@ -347,7 +347,10 @@
         "Form": {
             "success": "{cartItems, plural, =1 {1 item} other {# items}} toegevoegd aan <cartLink> je winkelwagen</cartLink>",
             "error": "Fout opgetreden bij het toevoegen van product aan winkelwagen. Probeer het opnieuw.",
-            "saveToWishlist": "Opslaan in verlanglijstje",
+            "download": "Download",
+            "share": "Share",
+            "compare": "Compare",
+            "saveToWishlist":  "Opslaan in verlanglijstje",
             "quantityLabel": "Aantal"
         },
         "Description": {

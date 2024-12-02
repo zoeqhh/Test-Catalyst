@@ -48,7 +48,7 @@ export const DateField = ({ option }: Props) => {
 
   return (
     <div>
-      <Label className="mb-2 inline-block font-semibold" htmlFor={`${option.entityId}`}>
+      <Label className="mb-2 inline-block" htmlFor={`${option.entityId}`}>
         {option.isRequired ? (
           <>
             Select  <span className="font-normal text-gray-500">(required)</span>

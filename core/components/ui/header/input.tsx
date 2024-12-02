@@ -30,7 +30,7 @@ export const Input = forwardRef<ElementRef<'input'>, Props>(
       {showClear && !pending && (
         <Button
           aria-label="Clear search"
-          className="absolute end-1.5 top-1/2 w-auto -translate-y-1/2 border-0 bg-transparent p-1.5 text-black hover:bg-transparent hover:text-primary focus-visible:text-primary peer-hover:text-primary peer-focus-visible:text-primary"
+          className="absolute end-1.5 top-1/2 w-auto -translate-y-1/2 border-0 bg-transparent p-1.5 hover:bg-transparent hover:text-primary focus-visible:text-primary peer-hover:text-primary peer-focus-visible:text-primary"
           onClick={onClickClear}
           type="button"
         >

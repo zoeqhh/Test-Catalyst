@@ -31,6 +31,8 @@ const GetProductSearchResultsQuery = graphql(
               }
               edges {
                 node {
+                  id
+                  entityId
                   variants {
                     edges {
                       node {

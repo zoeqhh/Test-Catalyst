@@ -23,13 +23,13 @@ interface Props {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const categoryId = Number(slug);
-  
+
   const data = await getCategoryPageData({
     categoryId,
   });
 
   const category = data.category;
-  
+
   if (!category) {
     return {};
   }
@@ -51,7 +51,7 @@ export default async function Category(props: Props) {
   setRequestLocale(locale);
 
   const t = await getTranslations('Category');
-  
+
   const categoryId = Number(slug);
 
   const [{ category, categoryTree }, search] = await Promise.all([
@@ -70,11 +70,11 @@ export default async function Category(props: Props) {
   return (
     <div className="group">
       <Breadcrumbs category={category} />
-      <ClientCategoryComponent 
-      category={category} 
-      productsCollection={productsCollection} 
-      search ={search} 
-      categoryTree ={categoryTree} 
+      <ClientCategoryComponent
+      category={category}
+      productsCollection={productsCollection}
+      search ={search}
+      categoryTree ={categoryTree}
       products={products}
       endCursor={endCursor}
       hasNextPage={hasNextPage}
@@ -83,9 +83,9 @@ export default async function Category(props: Props) {
       t ={t('products')}
       />
       {/* <div className="md:mb-8 lg:flex lg:flex-row lg:items-center lg:justify-between">
-        <h1 className="flex items-center mb-4 text-40 font-bold text-xh lg:mb-0 lg:text-40">
+        <h1 className="flex items-center mb-4 text-2xl font-bold lg:mb-0 lg:text-2xl">
           {category.name}
-          <span className="ml-2 text-20 text-8c font-normal text-muted-foreground">
+          <span className="ml-2 text-md text-gray-500 font-normal text-muted-foreground">
            ({productsCollection.collectionInfo?.totalItems ?? 0 })
           </span>
         </h1>
@@ -127,7 +127,7 @@ export default async function Category(props: Props) {
 
           {products.length === 0 && <EmptyState />}
 
-          <div className="grid grid-cols-2 gap-20 lg:grid-cols-3 xl:grid-cols-4 sm:gap-20">
+          <div className="grid grid-cols-2 gap-4 lg:grid-cols-3 xl:grid-cols-4 sm:gap-4">
             {products.map((product, index) => (
               <ProductCard
                 imagePriority={index <= 3}

@@ -5,6 +5,7 @@ import { useEffect, useId, useState } from 'react';
 import { useCompareDrawerContext } from '../compare-drawer';
 import { Checkbox } from '../form/checkbox';
 import { Label } from '../form/label';
+import { ShirtIcon } from 'lucide-react';
 
 interface Image {
   altText?: string;
@@ -52,12 +53,12 @@ export const Compare = ({ id, image, name }: Props) => {
     <div className="flex items-center gap-3">
       <Checkbox
         checked={checkedState}
-        className="h-4 w-4"
+        className="h-4 w-4 hidden"
         id={checkboxId}
         onCheckedChange={handleOnCheckedChange}
       />
-      <Label className="font-normal" htmlFor={checkboxId}>
-        Compare
+      <Label className="font-normal" htmlFor={checkboxId} aria-label='Compare' title="Compare">
+        <ShirtIcon />
       </Label>
     </div>
   );

@@ -20,7 +20,7 @@ const Swatch = forwardRef<ElementRef<typeof RadioGroupPrimitive.Root>, Props>(
 
     return (
       <RadioGroupPrimitive.Root
-        className={cn('flex flex-wrap gap-4', className)}
+        className={cn('flex flex-wrap gap-[4px]', className)}
         ref={ref}
         role="radiogroup"
         {...props}
@@ -33,7 +33,7 @@ const Swatch = forwardRef<ElementRef<typeof RadioGroupPrimitive.Root>, Props>(
               key={`${id}-${value}`}
               {...itemProps}
               className={cn(
-                'group h-12 w-12 border-2 bg-white p-1 hover:border-primary focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-primary/20 disabled:border-gray-100 disabled:hover:border-gray-100 data-[state=checked]:border-primary',
+                'group h-[88px] w-[88px] lg:h-[64px] lg:w-[64px] border p-[2px] border-white rounded-[6px] bg-white hover:border-primary focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-primary/20 disabled:border-gray-100 disabled:hover:border-gray-100 data-[state=checked]:border-black',
                 error &&
                   'border-error-secondary hover:border-error focus-visible:border-error-secondary focus-visible:ring-error/20 disabled:border-gray-200 data-[state=checked]:border-error-secondary',
               )}
@@ -42,7 +42,7 @@ const Swatch = forwardRef<ElementRef<typeof RadioGroupPrimitive.Root>, Props>(
             >
               {color ? (
                 <span
-                  className="block h-9 w-9 group-disabled:bg-gray-200 group-disabled:opacity-30"
+                  className="block h-full w-full rounded-[6px] group-disabled:bg-gray-200 group-disabled:opacity-30 border"
                   style={{
                     backgroundColor: color,
                     backgroundImage: `url(${color})`,

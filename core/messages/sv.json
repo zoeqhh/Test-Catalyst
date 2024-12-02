@@ -347,7 +347,10 @@
         "Form": {
             "success": "{cartItems, plural, =1 {1 Item} other {# Items}} har lagts till <cartLink> i kundvagnen</cartLink>",
             "error": "Produkten kunde inte läggas till i kundvagnen. Försök igen.",
-            "saveToWishlist": "Spara i önskelistan",
+            "download": "Download",
+            "share": "Share",
+            "compare": "Compare",
+            "saveToWishlist":  "Spara i önskelistan",
             "quantityLabel": "Kvantitet"
         },
         "Description": {
